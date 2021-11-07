@@ -1,5 +1,7 @@
 import java.util.LinkedList;
 
+import com.attendance.model.Student;
+
 public class Test {
 	public static void main(String[] args) {
 //		ArrayList<Integer> arr = new ArrayList<>();

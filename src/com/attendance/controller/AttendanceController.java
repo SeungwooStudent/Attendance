@@ -1,12 +1,16 @@
+package com.attendance.controller;
+
 import java.util.InputMismatchException;
 import java.util.LinkedList;
 import java.util.Scanner;
 
-public class Program {
+import com.attendance.model.Student;
+import com.attendance.view.ConsoleUI;
 
-	public static void main(String[] args) {
+public class AttendanceController {
+	public void startProgram() {
 
-		final Controller controller = new Controller();
+		ConsoleUI consoleUI = new ConsoleUI();
 		Scanner sc = new Scanner(System.in);
 //		int index = 0;
 //		Student students[] = new Student[Constants.MAX_STUDENT];
@@ -18,14 +22,12 @@ public class Program {
 		Student student = new Student(id, grade, name, major);
 
 		while (true) {
-
-			controller.display();
+			consoleUI.display();
 			int choice = 0;
 			try {
 				choice = sc.nextInt();
 			} catch (InputMismatchException ime) {
-				System.out.println("반드시 숫자를 입력해주세요");
-				System.out.println();
+				consoleUI.printInputMistmatchError();
 				sc = new Scanner(System.in);
 			}
 
@@ -35,7 +37,7 @@ public class Program {
 				while (isFinished) {
 
 					try {
-						System.out.println("학번을 입력하세요");
+						consoleUI.printInputStudentID();
 						student.id = sc.nextInt();
 						isFinished = false;
 
@@ -53,7 +55,7 @@ public class Program {
 							isFinished = false;
 						}
 					} catch (InputMismatchException ime) {
-						System.out.println("반드시 숫자를 입력해주세요");
+						consoleUI.printInputMistmatchError();
 						sc = new Scanner(System.in);
 					} catch (Exception e) {
 						System.out.println(e.getMessage());
@@ -111,7 +113,7 @@ public class Program {
 						isFinished = true;
 						while (isFinished) {
 							try {
-								controller.count();
+								consoleUI.count();
 								choice = sc.nextInt();
 								isFinished = false;
 							} catch (InputMismatchException ime) {
@@ -140,7 +142,7 @@ public class Program {
 							std.name = newname;
 							System.out.println("변경되었습니다.");
 							isFinished = false;
-						} else if (choice == 3) {					
+						} else if (choice == 3) {
 							System.out.println("변경하실 major를 입력하세요");
 							String newmajor = sc.next();
 							std.major = newmajor;
@@ -189,9 +191,9 @@ public class Program {
 
 				}
 				if (!isFind) {
-				System.out.println("없는 아이디입니다 다시 시도해주세요");
-				System.out.println();
-			}
+					System.out.println("없는 아이디입니다 다시 시도해주세요");
+					System.out.println();
+				}
 //				student.noneId();
 
 			} else if (choice == 4) {
