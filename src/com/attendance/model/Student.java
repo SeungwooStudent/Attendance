@@ -1,6 +1,5 @@
 package com.attendance.model;
 import java.util.LinkedList;
-import java.util.Scanner;
 
 public class Student {
 	public int id; // 학번
@@ -46,25 +45,13 @@ public class Student {
 		System.out.println("major : " + major);
 		System.out.println("=============");
 	}
-
-	public void noneId(boolean isFind) {
-		if (!isFind) {
-			System.out.println("없는 아이디입니다 다시 시도해주세요");
-			System.out.println();
-		}
-	}
-
-//	public void StudentfindId() {
-//		for (int i = 0; i < students.size(); i++) {
-//			Student std = students.get(i);
-//			
-//			if (delete == std.id) {
-//				students.remove(i);
-//				System.out.println("삭제되었습니다");
-//				break;
-//
-//			}
+	
+//	public void noneId(boolean isFind) {
+//		if (!isFind) {
+//			System.out.println("없는 아이디입니다 다시 시도해주세요");
+//			System.out.println();
 //		}
 //	}
+
 
 }

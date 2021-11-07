@@ -66,22 +66,20 @@ public class AttendanceController {
 				isFinished = true;
 				while (isFinished) {
 					try {
-						System.out.println("학년을 입력하세요");
+						consoleUI.printInputStudentgrade();
 						student.grade = sc.nextInt();
 						isFinished = false;
 					} catch (InputMismatchException ime) {
-						System.out.println("반드시 숫자를 입력해주세요");
+						consoleUI.printInputMistmatchError();
 						sc = new Scanner(System.in);
 					}
 				}
 
-				System.out.println("이름을 입력하세요");
+				consoleUI.printInputStudentname();
 				student.name = sc.next();
-
-				System.out.println("전공을 입력하세요");
+				consoleUI.printInputStudentmajor();
 				student.major = sc.next();
-				System.out.println("등록되었습니다");
-				System.out.println();
+				consoleUI.StudentEnrollment();
 				students.add(student);
 
 				student = new Student(id, grade, name, major);
@@ -94,11 +92,11 @@ public class AttendanceController {
 				boolean isFinished = true;
 				while (isFinished) {
 					try {
-						System.out.println("수정하실 id를 입력해주세요 ");
+						consoleUI.StudentReviseID();
 						ide = sc.nextInt();
 						isFinished = false;
 					} catch (InputMismatchException ime) {
-						System.out.println("반드시 숫자를 입력해주세요");
+						consoleUI.printInputMistmatchError();
 						sc = new Scanner(System.in);
 					}
 				}
@@ -117,7 +115,7 @@ public class AttendanceController {
 								choice = sc.nextInt();
 								isFinished = false;
 							} catch (InputMismatchException ime) {
-								System.out.println("반드시 숫자를 입력해주세요");
+								consoleUI.printInputMistmatchError();
 								sc = new Scanner(System.in);
 							}
 						}
@@ -126,27 +124,27 @@ public class AttendanceController {
 						if (choice == 1) {
 							while (isFinished) {
 								try {
-									System.out.println("변경하실 grade를 입력하세요");
+									consoleUI.StudentChangegrade();
 									int newgrade = sc.nextInt();
 									std.grade = newgrade;
-									System.out.println("변경되었습니다.");
+									consoleUI.Changecomplete();
 									isFinished = false;
 								} catch (InputMismatchException ime) {
-									System.out.println("반드시 숫자를 입력해주세요");
+									consoleUI.printInputMistmatchError();
 									sc = new Scanner(System.in);
 								}
 							}
 						} else if (choice == 2) {
-							System.out.println("변경하실 name을 입력하세요");
+							consoleUI.StudentChangename();
 							String newname = sc.next();
 							std.name = newname;
-							System.out.println("변경되었습니다.");
+							consoleUI.Changecomplete();
 							isFinished = false;
 						} else if (choice == 3) {
-							System.out.println("변경하실 major를 입력하세요");
+							consoleUI.StudentChangemajor();
 							String newmajor = sc.next();
 							std.major = newmajor;
-							System.out.println("변경되었습니다.");
+							consoleUI.Changecomplete();
 							isFinished = false;
 						}
 
@@ -156,11 +154,8 @@ public class AttendanceController {
 
 				}
 				if (!isFind) {
-					System.out.println("없는 아이디입니다 다시 시도해주세요");
-					System.out.println();
+					consoleUI.NoneID();
 				}
-//				isFind = true;
-//				student.noneId(!isFind);
 
 			} else if (choice == 3) {
 				// 삭제
@@ -169,11 +164,11 @@ public class AttendanceController {
 				int delete = 0;
 				while (isFinished) {
 					try {
-						System.out.println("삭제하실 id를 입력해주세요 ");
+						consoleUI.StudentRemoveID();
 						delete = sc.nextInt();
 						isFinished = false;
 					} catch (InputMismatchException ime) {
-						System.out.println("반드시 숫자를 입력해주세요");
+						consoleUI.printInputMistmatchError();
 						sc = new Scanner(System.in);
 					}
 				}
@@ -184,17 +179,15 @@ public class AttendanceController {
 					if (delete == std.id) {
 						isFind = true;
 						students.remove(i);
-						System.out.println("삭제되었습니다");
+						consoleUI.Removecomplete();
 						break;
 
 					}
 
 				}
 				if (!isFind) {
-					System.out.println("없는 아이디입니다 다시 시도해주세요");
-					System.out.println();
+					consoleUI.NoneID();
 				}
-//				student.noneId();
 
 			} else if (choice == 4) {
 
@@ -203,7 +196,7 @@ public class AttendanceController {
 				}
 
 			} else if (choice == 5) {
-				System.out.println("프로그램이 종료되었습니다");
+				consoleUI.EndProgram();
 				break;
 			}
 
