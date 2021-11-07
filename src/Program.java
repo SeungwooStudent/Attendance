@@ -1,23 +1,7 @@
 import java.util.InputMismatchException;
 import java.util.LinkedList;
 import java.util.Scanner;
-//class StudentfindId{
-//public void abc(int id) {
-//	LinkedList<Student> students = new LinkedList<>();
-//	int delete =0 ;
-//	for (int i = 0; i < students.size(); i++) {
-//		Student std = students.get(i);
-//		
-//		if (delete == std.id) {
-//			students.remove(i);
-//			System.out.println("삭제되었습니다");
-//			break;
-//
-//		}
-//	}
-//}
-//
-//}
+
 public class Program {
 
 	public static void main(String[] args) {
