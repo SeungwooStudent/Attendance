@@ -38,18 +38,18 @@ public class AttendanceController {
 
 					try {
 						consoleUI.printInputStudentID();
-						student.id = sc.nextInt();
+						student.setId(sc.nextInt());
 						isFinished = false;
 
 						for (int i = 0; i < students.size(); i++) {
 							Student std = students.get(i);
 							isFinished = true;
 
-							if (student.id == std.id) {
+							if (student.getId() == std.getId()) {
 								Exception e = new Exception("중복된ID입니다 다시시도해주세요");
 								sc = new Scanner(System.in);
 								throw e;
-							} else if (student.id != std.id) {
+							} else if (student.getId() != std.getId()) {
 								sc = new Scanner(System.in);
 							}
 							isFinished = false;
@@ -67,7 +67,7 @@ public class AttendanceController {
 				while (isFinished) {
 					try {
 						consoleUI.printInputStudentgrade();
-						student.grade = sc.nextInt();
+						student.setGrade(sc.nextInt());
 						isFinished = false;
 					} catch (InputMismatchException ime) {
 						consoleUI.printInputMistmatchError();
@@ -76,10 +76,13 @@ public class AttendanceController {
 				}
 
 				consoleUI.printInputStudentname();
-				student.name = sc.next();
+				student.setName(sc.next());
+
 				consoleUI.printInputStudentmajor();
-				student.major = sc.next();
+				student.setMajor(sc.next());
+
 				consoleUI.StudentEnrollment();
+
 				students.add(student);
 
 				student = new Student(id, grade, name, major);
@@ -104,7 +107,7 @@ public class AttendanceController {
 				for (int i = 0; i < students.size(); i++) {
 					Student std = students.get(i);
 
-					if (ide == std.id) {
+					if (ide == std.getId()) {
 						isFind = true;
 						isFinished = true;
 
@@ -125,8 +128,8 @@ public class AttendanceController {
 							while (isFinished) {
 								try {
 									consoleUI.StudentChangegrade();
-									int newgrade = sc.nextInt();
-									std.grade = newgrade;
+									std.setGrade(sc.nextInt());
+									std.getGrade();
 									consoleUI.Changecomplete();
 									isFinished = false;
 								} catch (InputMismatchException ime) {
@@ -136,14 +139,18 @@ public class AttendanceController {
 							}
 						} else if (choice == 2) {
 							consoleUI.StudentChangename();
-							String newname = sc.next();
-							std.name = newname;
+							std.setName(sc.next());
+							std.getName();
+//							String newname = sc.next();
+//							newname = std.getName();
 							consoleUI.Changecomplete();
 							isFinished = false;
 						} else if (choice == 3) {
 							consoleUI.StudentChangemajor();
-							String newmajor = sc.next();
-							std.major = newmajor;
+							std.setMajor(sc.next());
+							std.getMajor();
+//							String newmajor = sc.next();
+//							newmajor = std.getMajor();
 							consoleUI.Changecomplete();
 							isFinished = false;
 						}
@@ -176,7 +183,7 @@ public class AttendanceController {
 				for (int i = 0; i < students.size(); i++) {
 					Student std = students.get(i);
 
-					if (delete == std.id) {
+					if (delete == std.getId()) {
 						isFind = true;
 						students.remove(i);
 						consoleUI.Removecomplete();

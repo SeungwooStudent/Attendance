@@ -1,24 +1,62 @@
 package com.attendance.model;
+
 import java.util.LinkedList;
 
 public class Student {
-	public int id; // 학번
-	public int grade; // 학년
-	public String name; // 이름
-	public String major; // 전공
-	public int delete = 0;
-	
-	
-	
+	private int id; // 학번
+	private int grade; // 학년
+	private String name; // 이름
+	private String major; // 전공
+	private int delete = 0;
 //	int choice;
 
-//	public int getId() {
-//		return id;
-//	}
-//
-//	public void setId(int id) {
-//		this.id = id;
-//	}
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public int getGrade() {
+		return grade;
+	}
+
+	public void setGrade(int grade) {
+		this.grade = grade;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getMajor() {
+		return major;
+	}
+
+	public void setMajor(String major) {
+		this.major = major;
+	}
+
+	public int getDelete() {
+		return delete;
+	}
+
+	public void setDelete(int delete) {
+		this.delete = delete;
+	}
+
+	public LinkedList<Student> getStudents() {
+		return students;
+	}
+
+	public void setStudents(LinkedList<Student> students) {
+		this.students = students;
+	}
 
 	LinkedList<Student> students = new LinkedList<>();
 //	final Controller controller = new Controller();
@@ -45,13 +83,12 @@ public class Student {
 		System.out.println("major : " + major);
 		System.out.println("=============");
 	}
-	
+
 //	public void noneId(boolean isFind) {
 //		if (!isFind) {
 //			System.out.println("없는 아이디입니다 다시 시도해주세요");
 //			System.out.println();
 //		}
 //	}
-
 
 }
