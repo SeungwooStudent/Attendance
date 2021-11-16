@@ -12,8 +12,6 @@ public class AttendanceController {
 
 		ConsoleUI consoleUI = new ConsoleUI();
 		Scanner sc = new Scanner(System.in);
-//		int index = 0;
-//		Student students[] = new Student[Constants.MAX_STUDENT];
 
 		LinkedList<Student> students = new LinkedList<>();
 		int id = 0, grade = 0;
@@ -35,7 +33,6 @@ public class AttendanceController {
 
 				boolean isFinished = true;
 				while (isFinished) {
-
 					try {
 						consoleUI.printInputStudentID();
 						student.setId(sc.nextInt());
@@ -81,7 +78,7 @@ public class AttendanceController {
 				consoleUI.printInputStudentmajor();
 				student.setMajor(sc.next());
 
-				consoleUI.StudentEnrollment();
+				consoleUI.studentEnrollment();
 
 				students.add(student);
 
@@ -95,7 +92,7 @@ public class AttendanceController {
 				boolean isFinished = true;
 				while (isFinished) {
 					try {
-						consoleUI.StudentReviseID();
+						consoleUI.studentReviseID();
 						ide = sc.nextInt();
 						isFinished = false;
 					} catch (InputMismatchException ime) {
@@ -127,10 +124,10 @@ public class AttendanceController {
 						if (choice == 1) {
 							while (isFinished) {
 								try {
-									consoleUI.StudentChangegrade();
+									consoleUI.studentChangegrade();
 									std.setGrade(sc.nextInt());
-									std.getGrade();
-									consoleUI.Changecomplete();
+//									std.getGrade();
+									consoleUI.changeComplete();
 									isFinished = false;
 								} catch (InputMismatchException ime) {
 									consoleUI.printInputMistmatchError();
@@ -138,20 +135,16 @@ public class AttendanceController {
 								}
 							}
 						} else if (choice == 2) {
-							consoleUI.StudentChangename();
+							consoleUI.studentChangename();
 							std.setName(sc.next());
-							std.getName();
-//							String newname = sc.next();
-//							newname = std.getName();
-							consoleUI.Changecomplete();
+//							std.getName();
+							consoleUI.changeComplete();
 							isFinished = false;
 						} else if (choice == 3) {
-							consoleUI.StudentChangemajor();
+							consoleUI.studentChangemajor();
 							std.setMajor(sc.next());
-							std.getMajor();
-//							String newmajor = sc.next();
-//							newmajor = std.getMajor();
-							consoleUI.Changecomplete();
+//							std.getMajor();
+							consoleUI.changeComplete();
 							isFinished = false;
 						}
 
@@ -161,7 +154,7 @@ public class AttendanceController {
 
 				}
 				if (!isFind) {
-					consoleUI.NoneID();
+					consoleUI.noneID();
 				}
 
 			} else if (choice == 3) {
@@ -171,7 +164,7 @@ public class AttendanceController {
 				int delete = 0;
 				while (isFinished) {
 					try {
-						consoleUI.StudentRemoveID();
+						consoleUI.studentRemoveID();
 						delete = sc.nextInt();
 						isFinished = false;
 					} catch (InputMismatchException ime) {
@@ -186,14 +179,14 @@ public class AttendanceController {
 					if (delete == std.getId()) {
 						isFind = true;
 						students.remove(i);
-						consoleUI.Removecomplete();
+						consoleUI.removeComplete();
 						break;
 
 					}
 
 				}
 				if (!isFind) {
-					consoleUI.NoneID();
+					consoleUI.noneID();
 				}
 
 			} else if (choice == 4) {
@@ -203,7 +196,7 @@ public class AttendanceController {
 				}
 
 			} else if (choice == 5) {
-				consoleUI.EndProgram();
+				consoleUI.endProgram();
 				break;
 			}
 

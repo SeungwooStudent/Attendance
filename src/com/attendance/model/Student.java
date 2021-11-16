@@ -8,6 +8,7 @@ public class Student {
 	private String name; // 이름
 	private String major; // 전공
 	private int delete = 0;
+	LinkedList<Student> students = new LinkedList<>();
 //	int choice;
 
 	public int getId() {
@@ -58,16 +59,6 @@ public class Student {
 		this.students = students;
 	}
 
-	LinkedList<Student> students = new LinkedList<>();
-//	final Controller controller = new Controller();
-
-	public Student(int id, String name) {
-		this.id = id;
-		this.name = name;
-		grade = 4;
-		major = "computer";
-	}
-
 	public Student(int id, int grade, String name, String major) {
 		this.id = id;
 		this.grade = grade;
@@ -84,11 +75,13 @@ public class Student {
 		System.out.println("=============");
 	}
 
-//	public void noneId(boolean isFind) {
-//		if (!isFind) {
-//			System.out.println("없는 아이디입니다 다시 시도해주세요");
-//			System.out.println();
-//		}
+//	final Controller controller = new Controller();
+
+//	public Student(int id, String name) {
+//		this.id = id;
+//		this.name = name;
+//		grade = 4;
+//		major = "computer";
 //	}
 
 }

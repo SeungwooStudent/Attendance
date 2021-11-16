@@ -39,52 +39,52 @@ public class ConsoleUI {
 		System.out.println("전공을 입력하세요");
 	}
 
-	public void StudentEnrollment() {
+	public void studentEnrollment() {
 		System.out.println("등록되었습니다");
 		System.out.println();
 	}
 
-	public void StudentReviseID() {
+	public void studentReviseID() {
 		System.out.println("수정하실 id를 입력해주세요 ");
 		System.out.println();
 	}
 
-	public void StudentChangegrade() {
+	public void studentChangegrade() {
 		System.out.println("변경하실 grade를 입력하세요");
 		System.out.println();
 	}
 
-	public void StudentChangename() {
+	public void studentChangename() {
 		System.out.println("변경하실 name를 입력하세요");
 		System.out.println();
 	}
 
-	public void StudentChangemajor() {
+	public void studentChangemajor() {
 		System.out.println("변경하실 major를 입력하세요");
 		System.out.println();
 	}
 
-	public void Changecomplete() {
+	public void changeComplete() {
 		System.out.println("변경되었습니다.");
 		System.out.println();
 	}
 
-	public void StudentRemoveID() {
+	public void studentRemoveID() {
 		System.out.println("삭제하실 id를 입력해주세요 ");
 		System.out.println();
 	}
 
-	public void Removecomplete() {
+	public void removeComplete() {
 		System.out.println("삭제되었습니다.");
 		System.out.println();
 	}
 
-	public void NoneID() {
+	public void noneID() {
 		System.out.println("없는 아이디입니다 다시 시도해주세요");
 		System.out.println();
 	}
 
-	public void EndProgram() {
+	public void endProgram() {
 		System.out.println("프로그램이 종료되었습니다.");
 		System.out.println();
 	}
