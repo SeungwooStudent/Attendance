@@ -8,14 +8,14 @@ import com.attendance.view.ConsoleUI;
 
 public class StudentManager {
 	Scanner sc = new Scanner(System.in);
-	LinkedList<Student> students = new LinkedList<>();
+	private LinkedList<Student> students = new LinkedList<>();
 	ConsoleUI consoleUI = new ConsoleUI();
 
 	int id = 0, grade = 0;
 	String name = null, major = null;
 	boolean isFinished;
 
-	Student student = new Student(id, grade, name, major);
+
 
 	public void printInputStudentgrade() {
 
@@ -28,21 +28,40 @@ public class StudentManager {
 	}
 
 	public boolean isCheckId(int id) {
-			for (int i = 0; i < students.size(); i++) {
-				Student std = students.get(i);
-//				isFinished = true;
-
-				if (student.getId() == std.getId()) {
-					return false;
-////					Exception e = new Exception("중복된ID입니다 다시시도해주세요");
-//					sc = new Scanner(System.in);
-				} else if (student.getId() != std.getId()) {
-					return true;
-				}
-//				isFinished = false;
+		for (int i = 0; i < students.size(); i++) {
+			Student std = students.get(i);
+			if (id == std.getId()) {
+				return true;
 			}
-		
-		return true;
-
+		}
+		return false;
+	}
+	
+	public void addStudent(Student student) {
+		students.add(student);
+	}
+	
+	public void printStudents() {
+		for (int i = 0; i < students.size(); i++) {
+			students.get(i).introduceMyself();
+		}
+	}
+	
+	public Student findStudentByID(int id) {
+		for (int i = 0; i < students.size(); i++) {
+			Student student = students.get(i);
+			if (student.getId() == id) {
+				return student;
+			}
+		}
+		return null;
+	}
+	
+	public void changeGrade(int id, int grade) {
+		for (int i = 0; i < students.size(); i++) {
+			if (students.get(i).getId() == id) {
+				students.get(i).setGrade(grade);
+			}
+		}
 	}
 }
