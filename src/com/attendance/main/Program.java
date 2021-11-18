@@ -1,10 +1,10 @@
 package com.attendance.main;
-import com.attendance.controller.AttendanceController2;
+import com.attendance.controller.AttendanceController;
 
 public class Program {
 
 	public static void main(String[] args) {
-		AttendanceController2 attendanceController = new AttendanceController2();
+		AttendanceController attendanceController = new AttendanceController();
 		attendanceController.startProgram();
 	}
 }

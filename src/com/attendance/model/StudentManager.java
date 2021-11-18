@@ -15,8 +15,6 @@ public class StudentManager {
 	String name = null, major = null;
 	boolean isFinished;
 
-
-
 	public void printInputStudentgrade() {
 
 		try {
@@ -36,17 +34,17 @@ public class StudentManager {
 		}
 		return false;
 	}
-	
+
 	public void addStudent(Student student) {
 		students.add(student);
 	}
-	
+
 	public void printStudents() {
 		for (int i = 0; i < students.size(); i++) {
 			students.get(i).introduceMyself();
 		}
 	}
-	
+
 	public Student findStudentByID(int id) {
 		for (int i = 0; i < students.size(); i++) {
 			Student student = students.get(i);
@@ -56,11 +54,37 @@ public class StudentManager {
 		}
 		return null;
 	}
-	
+
 	public void changeGrade(int id, int grade) {
 		for (int i = 0; i < students.size(); i++) {
 			if (students.get(i).getId() == id) {
 				students.get(i).setGrade(grade);
+			}
+		}
+	}
+
+	public void changeName(int id, String name) {
+		for (int i = 0; i < students.size(); i++) {
+			if (students.get(i).getId() == id) {
+				students.get(i).setName(name);
+				;
+			}
+		}
+	}
+
+	public void changeMajor(int id, String major) {
+		for (int i = 0; i < students.size(); i++) {
+			if (students.get(i).getId() == id) {
+				students.get(i).setMajor(major);
+				;
+			}
+		}
+	}
+
+	public void removeID(int id) {
+		for (int i = 0; i < students.size(); i++) {
+			if (students.get(i).getId() == id) {
+				students.remove(i);
 			}
 		}
 	}

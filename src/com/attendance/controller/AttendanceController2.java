@@ -90,9 +90,9 @@ public class AttendanceController2 {
 				Student student = studentManager.findStudentByID(ide);
 				if (student == null) {
 					consoleUI.noneID();
-					continue ;
+					continue;
 				}
-				
+
 				isFinished = true;
 				while (isFinished) {
 					try {
@@ -120,18 +120,18 @@ public class AttendanceController2 {
 					}
 				} else if (choice == 2) {
 					consoleUI.studentChangename();
-//					std.setName(sc.next());
-//					std.getName();
+					name = sc.next();
+					studentManager.changeName(ide, name);
 					consoleUI.changeComplete();
 					isFinished = false;
+					
 				} else if (choice == 3) {
 					consoleUI.studentChangemajor();
-//					std.setMajor(sc.next());
-//					std.getMajor();
+					major = sc.next();
+					studentManager.changeMajor(ide, major);
 					consoleUI.changeComplete();
 					isFinished = false;
 				}
-				
 
 //				for (int i = 0; i < students.size(); i++) {
 //					Student std = students.get(i);
@@ -198,28 +198,31 @@ public class AttendanceController2 {
 					try {
 						consoleUI.studentRemoveID();
 						delete = sc.nextInt();
+						studentManager.removeID(delete);
+						consoleUI.removeComplete();
 						isFinished = false;
 					} catch (InputMismatchException ime) {
 						consoleUI.printInputMistmatchError();
 						sc = new Scanner(System.in);
 					}
 				}
-
-				for (int i = 0; i < students.size(); i++) {
-					Student std = students.get(i);
-
-					if (delete == std.getId()) {
-						isFind = true;
-						students.remove(i);
-						consoleUI.removeComplete();
-						break;
-
-					}
-
-				}
-				if (!isFind) {
-					consoleUI.noneID();
-				}
+				
+				
+//				for (int i = 0; i < students.size(); i++) {
+//					Student std = students.get(i);
+//
+//					if (delete == std.getId()) {
+//						isFind = true;
+//						students.remove(i);
+//						consoleUI.removeComplete();
+//						break;
+//
+//					}
+//
+//				}
+//				if (!isFind) {
+//					consoleUI.noneID();
+//				}
 
 			} else if (choice == 4) {
 				studentManager.printStudents();
