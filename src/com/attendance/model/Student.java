@@ -58,6 +58,12 @@ public class Student {
 	public void setStudents(LinkedList<Student> students) {
 		this.students = students;
 	}
+	
+	public Student(int grade, String name, String major) {
+		this.grade = grade;
+		this.name = name;
+		this.major = major;
+	}
 
 	public Student(int id, int grade, String name, String major) {
 		this.id = id;
