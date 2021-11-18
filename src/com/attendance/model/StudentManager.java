@@ -13,20 +13,14 @@ public class StudentManager {
 
 	int id = 0, grade = 0;
 	String name = null, major = null;
+	boolean isFinished;
 
 	Student student = new Student(id, grade, name, major);
 
-	public void choiceID(int id) {
-		consoleUI.printInputStudentID();
-//		id = student.getId();
-		student.setId(sc.nextInt());
+	public void printInputStudentgrade() {
 
-	}
-
-	public void choicegrade(int choice) {
 		try {
-			consoleUI.printInputStudentgrade();
-			student.setGrade(sc.nextInt());
+			isFinished = false;
 		} catch (InputMismatchException ime) {
 			consoleUI.printInputMistmatchError();
 			sc = new Scanner(System.in);
@@ -34,27 +28,21 @@ public class StudentManager {
 	}
 
 	public boolean isCheckId(int id) {
-		try {
 			for (int i = 0; i < students.size(); i++) {
 				Student std = students.get(i);
+//				isFinished = true;
 
-				if (id == std.getId()) {
-					Exception e = new Exception("중복된ID입니다 다시시도해주세요");
-					sc = new Scanner(System.in);
-					throw e;
-				} else if (id != std.getId()) {
-					sc = new Scanner(System.in);
+				if (student.getId() == std.getId()) {
+					return false;
+////					Exception e = new Exception("중복된ID입니다 다시시도해주세요");
+//					sc = new Scanner(System.in);
+				} else if (student.getId() != std.getId()) {
+					return true;
 				}
-
+//				isFinished = false;
 			}
-		} catch (InputMismatchException ime) {
-			consoleUI.printInputMistmatchError();
-			sc = new Scanner(System.in);
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-			sc = new Scanner(System.in);
-		}
+		
+		return true;
 
-		return false;
 	}
 }

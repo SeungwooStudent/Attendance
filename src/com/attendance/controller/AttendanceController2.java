@@ -17,11 +17,11 @@ public class AttendanceController2 {
 		LinkedList<Student> students = new LinkedList<>();
 		int id = 0, grade = 0;
 		String name = null, major = null;
-		StudentManager studentmanager = new StudentManager();
+
 		Student student = new Student(id, grade, name, major);
+		StudentManager studentmanager = new StudentManager();
 
 		while (true) {
-
 			consoleUI.display();
 			int choice = 0;
 			try {
@@ -32,16 +32,32 @@ public class AttendanceController2 {
 			}
 
 			if (choice == 1) {
+
 				boolean isFinished = true;
 				while (isFinished) {
-					studentmanager.choiceID(id);
-					studentmanager.isCheckId(student.getId());
+					consoleUI.printInputStudentID();
+					student.setId(sc.nextInt());
 					isFinished = false;
+					try {
+						studentmanager.isCheckId(student.getId());
+						Exception e = new Exception("중복된ID입니다 다시시도해주세요");
+						throw e;
+					}catch (InputMismatchException ime) {
+						consoleUI.printInputMistmatchError();
+						sc = new Scanner(System.in);
+					} catch (Exception e) {
+						System.out.println(e.getMessage());
+						sc = new Scanner(System.in);
+					}
+					
 				}
+
 				isFinished = true;
 				while (isFinished) {
-					studentmanager.choicegrade(student.getGrade());
+					consoleUI.printInputStudentgrade();
+					student.setGrade(sc.nextInt());
 					isFinished = false;
+					studentmanager.printInputStudentgrade();
 				}
 
 				consoleUI.printInputStudentname();
