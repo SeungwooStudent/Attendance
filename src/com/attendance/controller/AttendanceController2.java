@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.Scanner;
 
 import com.attendance.model.Student;
-import com.attendance.model.StudentManager;
+import com.attendance.model.StudentManager2;
 import com.attendance.view.ConsoleUI;
 
 public class AttendanceController2 {
@@ -18,7 +18,7 @@ public class AttendanceController2 {
 		int id = 0, grade = 0;
 		String name = null, major = null;
 
-		StudentManager studentManager = new StudentManager();
+		StudentManager2 studentManager = new StudentManager2();
 
 		while (true) {
 			consoleUI.display();
@@ -38,8 +38,9 @@ public class AttendanceController2 {
 					id = sc.nextInt();
 					isFinished = false;
 					try {
-						boolean isCheckId = studentManager.isCheckId(id);
-						if (isCheckId) {
+//						boolean isCheckId = studentManager.isCheckId(id);
+						boolean checkId = studentManager.checkId(id);
+						if (checkId) {
 							Exception e = new Exception("중복된ID입니다 다시시도해주세요");
 							throw e;
 						}
@@ -50,7 +51,6 @@ public class AttendanceController2 {
 						System.out.println(e.getMessage());
 						sc = new Scanner(System.in);
 					}
-
 				}
 
 				isFinished = true;
@@ -68,7 +68,11 @@ public class AttendanceController2 {
 				major = sc.next();
 				Student student = new Student(id, grade, name, major);
 
-				studentManager.addStudent(student);
+//				studentManager.addStudent(student);
+				
+				studentManager.studentID(student);
+				studentManager.studentID(student);
+				studentManager.studentID(student);
 				consoleUI.studentEnrollment();
 
 			} else if (choice == 2) {
@@ -92,6 +96,10 @@ public class AttendanceController2 {
 					consoleUI.noneID();
 					continue;
 				}
+//				if (student == null) {
+//					consoleUI.noneID();
+//					continue;
+//				}
 
 				isFinished = true;
 				while (isFinished) {
@@ -124,7 +132,7 @@ public class AttendanceController2 {
 					studentManager.changeName(ide, name);
 					consoleUI.changeComplete();
 					isFinished = false;
-					
+
 				} else if (choice == 3) {
 					consoleUI.studentChangemajor();
 					major = sc.next();
@@ -132,62 +140,6 @@ public class AttendanceController2 {
 					consoleUI.changeComplete();
 					isFinished = false;
 				}
-
-//				for (int i = 0; i < students.size(); i++) {
-//					Student std = students.get(i);
-//
-//					if (ide == std.getId()) {
-//						isFind = true;
-//						isFinished = true;
-//
-//						isFinished = true;
-//						while (isFinished) {
-//							try {
-//								consoleUI.count();
-//								choice = sc.nextInt();
-//								isFinished = false;
-//							} catch (InputMismatchException ime) {
-//								consoleUI.printInputMistmatchError();
-//								sc = new Scanner(System.in);
-//							}
-//						}
-//
-//						isFinished = true;
-//						if (choice == 1) {
-//							while (isFinished) {
-//								try {
-//									consoleUI.studentChangegrade();
-//									std.setGrade(sc.nextInt());
-////									std.getGrade();
-//									consoleUI.changeComplete();
-//									isFinished = false;
-//								} catch (InputMismatchException ime) {
-//									consoleUI.printInputMistmatchError();
-//									sc = new Scanner(System.in);
-//								}
-//							}
-//						} else if (choice == 2) {
-//							consoleUI.studentChangename();
-//							std.setName(sc.next());
-////							std.getName();
-//							consoleUI.changeComplete();
-//							isFinished = false;
-//						} else if (choice == 3) {
-//							consoleUI.studentChangemajor();
-//							std.setMajor(sc.next());
-////							std.getMajor();
-//							consoleUI.changeComplete();
-//							isFinished = false;
-//						}
-//
-//						break;
-//
-//					}
-//
-//				}
-//				if (!isFind) {
-//					consoleUI.noneID();
-//				}
 
 			} else if (choice == 3) {
 				// 삭제
@@ -206,26 +158,9 @@ public class AttendanceController2 {
 						sc = new Scanner(System.in);
 					}
 				}
-				
-				
-//				for (int i = 0; i < students.size(); i++) {
-//					Student std = students.get(i);
-//
-//					if (delete == std.getId()) {
-//						isFind = true;
-//						students.remove(i);
-//						consoleUI.removeComplete();
-//						break;
-//
-//					}
-//
-//				}
-//				if (!isFind) {
-//					consoleUI.noneID();
-//				}
 
 			} else if (choice == 4) {
-				studentManager.printStudents();
+				studentManager.printAll();
 
 			} else if (choice == 5) {
 				consoleUI.endProgram();

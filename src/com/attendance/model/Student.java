@@ -81,13 +81,5 @@ public class Student {
 		System.out.println("=============");
 	}
 
-//	final Controller controller = new Controller();
-
-//	public Student(int id, String name) {
-//		this.id = id;
-//		this.name = name;
-//		grade = 4;
-//		major = "computer";
-//	}
 
 }

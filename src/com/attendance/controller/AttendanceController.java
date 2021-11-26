@@ -133,61 +133,6 @@ public class AttendanceController {
 					isFinished = false;
 				}
 
-//				for (int i = 0; i < students.size(); i++) {
-//					Student std = students.get(i);
-//
-//					if (ide == std.getId()) {
-//						isFind = true;
-//						isFinished = true;
-//
-//						isFinished = true;
-//						while (isFinished) {
-//							try {
-//								consoleUI.count();
-//								choice = sc.nextInt();
-//								isFinished = false;
-//							} catch (InputMismatchException ime) {
-//								consoleUI.printInputMistmatchError();
-//								sc = new Scanner(System.in);
-//							}
-//						}
-//
-//						isFinished = true;
-//						if (choice == 1) {
-//							while (isFinished) {
-//								try {
-//									consoleUI.studentChangegrade();
-//									std.setGrade(sc.nextInt());
-////									std.getGrade();
-//									consoleUI.changeComplete();
-//									isFinished = false;
-//								} catch (InputMismatchException ime) {
-//									consoleUI.printInputMistmatchError();
-//									sc = new Scanner(System.in);
-//								}
-//							}
-//						} else if (choice == 2) {
-//							consoleUI.studentChangename();
-//							std.setName(sc.next());
-////							std.getName();
-//							consoleUI.changeComplete();
-//							isFinished = false;
-//						} else if (choice == 3) {
-//							consoleUI.studentChangemajor();
-//							std.setMajor(sc.next());
-////							std.getMajor();
-//							consoleUI.changeComplete();
-//							isFinished = false;
-//						}
-//
-//						break;
-//
-//					}
-//
-//				}
-//				if (!isFind) {
-//					consoleUI.noneID();
-//				}
 
 			} else if (choice == 3) {
 				// 삭제
@@ -207,22 +152,6 @@ public class AttendanceController {
 					}
 				}
 				
-				
-//				for (int i = 0; i < students.size(); i++) {
-//					Student std = students.get(i);
-//
-//					if (delete == std.getId()) {
-//						isFind = true;
-//						students.remove(i);
-//						consoleUI.removeComplete();
-//						break;
-//
-//					}
-//
-//				}
-//				if (!isFind) {
-//					consoleUI.noneID();
-//				}
 
 			} else if (choice == 4) {
 				studentManager.printStudents();
