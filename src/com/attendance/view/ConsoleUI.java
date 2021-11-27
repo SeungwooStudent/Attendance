@@ -8,7 +8,8 @@ public class ConsoleUI {
 		System.out.println("2. 학생 수정");
 		System.out.println("3. 학생 삭제");
 		System.out.println("4. 모든학생 출력");
-		System.out.println("5. 종료");
+		System.out.println("5. 전체삭제");
+		System.out.println("6. 종료");
 	}
 
 	public void count() {

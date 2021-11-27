@@ -36,21 +36,22 @@ public class AttendanceController2 {
 				while (isFinished) {
 					consoleUI.printInputStudentID();
 					id = sc.nextInt();
-					isFinished = false;
 					try {
-//						boolean isCheckId = studentManager.isCheckId(id);
 						boolean checkId = studentManager.checkId(id);
 						if (checkId) {
 							Exception e = new Exception("중복된ID입니다 다시시도해주세요");
 							throw e;
 						}
+						isFinished = false;
 					} catch (InputMismatchException ime) {
 						consoleUI.printInputMistmatchError();
 						sc = new Scanner(System.in);
 					} catch (Exception e) {
 						System.out.println(e.getMessage());
 						sc = new Scanner(System.in);
+						isFinished = true;
 					}
+
 				}
 
 				isFinished = true;
@@ -69,9 +70,7 @@ public class AttendanceController2 {
 				Student student = new Student(id, grade, name, major);
 
 //				studentManager.addStudent(student);
-				
-				studentManager.studentID(student);
-				studentManager.studentID(student);
+
 				studentManager.studentID(student);
 				consoleUI.studentEnrollment();
 
@@ -96,10 +95,6 @@ public class AttendanceController2 {
 					consoleUI.noneID();
 					continue;
 				}
-//				if (student == null) {
-//					consoleUI.noneID();
-//					continue;
-//				}
 
 				isFinished = true;
 				while (isFinished) {
@@ -150,19 +145,31 @@ public class AttendanceController2 {
 					try {
 						consoleUI.studentRemoveID();
 						delete = sc.nextInt();
-						studentManager.removeID(delete);
-						consoleUI.removeComplete();
+						Student student = studentManager.findStudentByID(delete);
+						if (student == null) {
+							consoleUI.noneID();
+						}
+						if (student != null) {
+							studentManager.removeID(delete);
+							consoleUI.removeComplete();
+						}
+
 						isFinished = false;
 					} catch (InputMismatchException ime) {
 						consoleUI.printInputMistmatchError();
 						sc = new Scanner(System.in);
 					}
+
 				}
 
 			} else if (choice == 4) {
 				studentManager.printAll();
 
 			} else if (choice == 5) {
+				studentManager.removeAll();
+				consoleUI.removeComplete();
+
+			} else if (choice == 6) {
 				consoleUI.endProgram();
 				break;
 			}
