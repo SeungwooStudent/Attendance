@@ -7,5 +7,6 @@ public class Program {
 	public static void main(String[] args) {
 		AttendanceController2 attendanceController = new AttendanceController2();
 		attendanceController.startProgram();
+
 	}
 }

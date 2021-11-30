@@ -1,10 +1,10 @@
 package com.attendance.model;
 
 import java.util.HashMap;
-import java.util.InputMismatchException;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.TreeMap;
 
 import com.attendance.view.ConsoleUI;
 
@@ -14,12 +14,15 @@ public class StudentManager2 {
 	ConsoleUI consoleUI = new ConsoleUI();
 
 	private Map<Integer, Student> student = new HashMap<>();
+	private TreeMap<Integer, Student> TM = new TreeMap<Integer, Student>(student);
+
 	int id, grade;
 	String name, major;
 	boolean isFinished;
 
 	public void studentID(Student studentss) {
 		student.put(studentss.getId(), studentss);
+
 	}
 
 	public boolean checkId(int id) {
@@ -29,15 +32,15 @@ public class StudentManager2 {
 		return false;
 	}
 
-	public void printInputStudentgrade() {
-
-		try {
-			isFinished = false;
-		} catch (InputMismatchException ime) {
-			consoleUI.printInputMistmatchError();
-			sc = new Scanner(System.in);
-		}
-	}
+//	public void printInputStudentgrade() {
+//
+//		try {
+//			isFinished = false;
+//		} catch (InputMismatchException ime) {
+//			consoleUI.printInputMistmatchError();
+//			sc = new Scanner(System.in);
+//		}
+//	}
 
 //	public void addStudent(Student student) {
 //		students.add(student);
@@ -79,10 +82,12 @@ public class StudentManager2 {
 	}
 
 	public void printAll() {
-		Iterator<Integer> iterator = student.keySet().iterator();
+		TM.putAll(student);
+		Iterator<Integer> iterator = TM.keySet().iterator();
 		while (iterator.hasNext()) {
-			Integer key = iterator.next();
-			student.get(key).introduceMyself();
+			Integer name = iterator.next();
+			student.get(name).introduceMyself();
+
 		}
 	}
 
@@ -91,7 +96,8 @@ public class StudentManager2 {
 		while (iterator.hasNext()) {
 			Integer key = iterator.next();
 			iterator.remove();
-//			student.remove(key);
+			student.remove(key);
+//			student.clear();
 
 		}
 	}

@@ -34,9 +34,10 @@ public class AttendanceController2 {
 
 				boolean isFinished = true;
 				while (isFinished) {
-					consoleUI.printInputStudentID();
-					id = sc.nextInt();
+
 					try {
+						consoleUI.printInputStudentID();
+						id = sc.nextInt();
 						boolean checkId = studentManager.checkId(id);
 						if (checkId) {
 							Exception e = new Exception("중복된ID입니다 다시시도해주세요");
@@ -56,10 +57,14 @@ public class AttendanceController2 {
 
 				isFinished = true;
 				while (isFinished) {
-					consoleUI.printInputStudentgrade();
-					grade = sc.nextInt();
-					isFinished = false;
-					studentManager.printInputStudentgrade();
+					try {
+						consoleUI.printInputStudentgrade();
+						grade = sc.nextInt();
+						isFinished = false;
+					} catch (InputMismatchException ime) {
+						consoleUI.printInputMistmatchError();
+						sc = new Scanner(System.in);
+					}
 				}
 
 				consoleUI.printInputStudentname();
